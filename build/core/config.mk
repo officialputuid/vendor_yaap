@@ -18,6 +18,12 @@ ifeq ($(TARGET_BUILD_VARIANT),eng)
 SELINUX_IGNORE_NEVERALLOWS := true
 endif
 
+# AOSP recovery flashing
+ifeq ($(TARGET_USES_AOSP_RECOVERY),true)
+ADDITIONAL_SYSTEM_PROPERTIES  += \
+    persist.vendor.recovery_update=true
+endif
+
 # Rules for QCOM targets
 include $(TOPDIR)vendor/yaap/build/core/qcom_target.mk
 
